@@ -52,6 +52,12 @@ class TestProducts:
 
         assert after_buy == before_buy - in_cart
 
+    def test_product_buyx(self, product):
+        # TODO напишите проверки на метод buy
+        product.buy(50)
+
+        assert product.check_quantity(700)
+
 
     def test_product_buy_more_than_available(self, product):
         # TODO напишите проверки на метод buy,
@@ -100,6 +106,11 @@ class TestCart:
 
         with pytest.raises(KeyError):
             cart.remove_product(product, 1)
+
+        cart.add_product(product, 1000)
+        cart.remove_product(product)
+        assert product not in cart.products
+
 
     def test_cart_clear(self, cart, product):
         cart.add_product(product, 1000)

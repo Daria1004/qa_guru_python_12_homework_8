@@ -91,9 +91,6 @@ class Cart:
         В этом случае нужно выбросить исключение ValueError
         """
         for product in self.products:
-            if not product.check_quantity(self.products[product]):
-                raise ValueError
-            else:
-                product.buy(self.products[product])
+            product.buy(self.products[product])
 
         self.clear()
